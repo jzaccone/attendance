@@ -43,6 +43,7 @@ node {
     
     stage 'deploy docker container'
     sh "ssh jzattendance 'sudo docker pull jzaccone/jzjhipster'"
-    sh "ssh jzattendance 'sudo docker run -d -p 8080:8080 jzaccone/jzjhipster'"
+    sh "ssh jzattendance 'sudo docker rm -f jzjhipster"
+    sh "ssh jzattendance 'sudo docker run -d -p 8080:8080 --name jzjhipster jzaccone/jzjhipster'"
    
 }
