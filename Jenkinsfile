@@ -35,8 +35,15 @@ node {
    // stage 'sonar analysis'
    // sh "sudo ./mvnw sonar:sonar -Dsonar.host.url=http://ec2-52-23-166-207.compute-1.amazonaws.com/sonar"
 
-    // stage 'deploy'
-    // sh "scp target/*.war attendance:attendance.war"
-    // sh "ssh attendance 'java -jar attendance.war'"
+    stage 'build docker image'
+    sh "sudo docker build -t jzaccone/jzjhipster"
+    
+    stage 'push docker image'
+    sh "sudo docker push jzaccone/jzhipster"
+    
+    stage 'deploy docker container'
+    sh "scp target/*.war attendance:attendance.war"
+    sh "ssh jzattendance 'sudo docker pull jzaccone/jzhipster'"
+    sh "ssh jzattendance 'sudo docker run -d jzaccone/jzhipster'"
    
 }
