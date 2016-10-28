@@ -22,11 +22,11 @@ node {
     sh "npm install -g grunt-cli"
     sh "npm install -g gulp-cli"
     
-    stage 'backend tests'
-    sh "./mvnw test"
+    //stage 'backend tests'
+    //sh "./mvnw test"
 
-    stage 'frontend tests'
-    sh "gulp test"
+   // stage 'frontend tests'
+    //sh "gulp test"
 
     stage 'package'
     sh "./mvnw -Pprod  -Dmaven.tests.skip=true package"
