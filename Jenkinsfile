@@ -36,7 +36,7 @@ node {
    // sh "sudo ./mvnw sonar:sonar -Dsonar.host.url=http://ec2-52-23-166-207.compute-1.amazonaws.com/sonar"
 
     stage 'build docker image'
-    sh "sudo docker build -t jzaccone/jzjhipster"
+    sh "sudo docker build -t jzaccone/jzjhipster ."
     
     stage 'push docker image'
     sh "sudo docker push jzaccone/jzhipster"
