@@ -39,11 +39,10 @@ node {
     sh "sudo docker build -t jzaccone/jzjhipster ."
     
     stage 'push docker image'
-    sh "sudo docker push jzaccone/jzhipster"
+    sh "sudo docker push jzaccone/jzjhipster"
     
     stage 'deploy docker container'
-    sh "scp target/*.war attendance:attendance.war"
-    sh "ssh jzattendance 'sudo docker pull jzaccone/jzhipster'"
-    sh "ssh jzattendance 'sudo docker run -d jzaccone/jzhipster'"
+    sh "ssh jzattendance 'sudo docker pull jzaccone/jzjhipster'"
+    sh "ssh jzattendance 'sudo docker run -d -p 8080:8080 jzaccone/jzjhipster'"
    
 }
